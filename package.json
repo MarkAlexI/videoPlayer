@@ -1,0 +1,11 @@
+{
+  "name": "#",
+  "version": "1.0.0",
+  "description": "$",
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "devDependencies": {
+    "rollup": "^4.13.2"
+  }
+}
