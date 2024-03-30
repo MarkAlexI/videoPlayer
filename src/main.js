@@ -1,6 +1,3 @@
-import { version } from "../package.json";
+import say from "./first.js";
 
-export default function () {
-  console.log("version :" + version);
-  console.log("Das is Work?");
-}
+say();
