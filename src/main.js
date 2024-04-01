@@ -1,3 +1,3 @@
-import say from "./first.js";
+import say from "./modules/first.js";
 
 say();

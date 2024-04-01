@@ -1,6 +1,7 @@
 import tailwindcss from "tailwindcss";
 import tailwindConfig from "./tailwind.config.js";
 import postcss from "postcss";
+import { eslint } from "rollup-plugin-eslint";
 
 export default {
   input: "src/main.js",
@@ -19,6 +20,11 @@ export default {
         insertAt: "top",
       },
       plugins: [tailwindcss(tailwindConfig)],
-    })
+    }),
+    eslint({
+      exclude: ["src/styles/**"],
+      include: ["src/modules/**"],
+      fix: true
+    }),
   ]
 };
