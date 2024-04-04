@@ -12,9 +12,21 @@
   <script src="./bundle.js" type="module" defer="true"></script>
 </head>
 
-<body>
-  <h1 class="text-3xl font-bold underline text-red-800">Start</h1>
-  <p>Ready</p>
-  <i class="material-icons text-white text-3xl w-12">replay_10 </i>
+<body class="bg-indigo-950 p-10">
+  <div
+    id="container"
+    class="w-4/5 h-4/5 mx-auto rounded-lg overflow-hidden relative group"
+  >
+    <!-- VIDEO -->
+    <figure>
+      <video class="w-full">
+        <source
+          src="https://archive.org/download/WebmVp8Vorbis/webmvp8_512kb.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </figure>
+  </div>
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
