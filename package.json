@@ -1,11 +1,11 @@
 {
   "name": "videoplayer",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Custom Video Player on HTML. Used RollupJS, Tailwind with postcss.",
   "author": "markalexi",
   "type": "module",
   "scripts": {
-    "run": "node server",
+    "start": "node server",
     "lint": "eslint . --ext .js,.mjs,.cjs --ignore-path .gitignore .",
     "lintfix": "eslint . --ext .js,.mjs,.cjs --ignore-path .gitignore . --fix",
     "build": "rollup --config && npx tailwindcss -i ./src/styles/main.css -o ./build/main.css --minify"
