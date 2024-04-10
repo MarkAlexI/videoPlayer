@@ -1,3 +1,3 @@
-import say from "./modules/first.js";
+import playPauseFn from "./modules/playPauseFn.js";
 
-say();
+document.querySelector("#play-pause").addEventListener("click", playPauseFn);
