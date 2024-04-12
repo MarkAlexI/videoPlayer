@@ -24,5 +24,8 @@ document
 
 document
   .querySelector("video")
-  .addEventListener("pause", updatePlayPauseIcon)
   .addEventListener("play", updatePlayPauseIcon);
+
+document
+  .querySelector("video")
+  .addEventListener("pause", updatePlayPauseIcon);
