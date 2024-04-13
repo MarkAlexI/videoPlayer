@@ -1,15 +1,10 @@
-const video$1 = document.querySelector("video");
-
-function playPauseFn () {
-  video$1.paused
-    ? video$1.play()
-    : video$1.pause();
+function playPauseFn (video) {
+  video.paused
+    ? video.play()
+    : video.pause();
 }
 
-const playPauseBtn = document.querySelector("#play-pause");
-const video = document.querySelector("video");
-
-function updatePlayPauseIcon () {
+function updatePlayPauseIcon (playPauseBtn, video) {
   const icon = playPauseBtn.querySelector("i");
 
   icon.textContent = "";
@@ -18,14 +13,14 @@ function updatePlayPauseIcon () {
     : "paused";
 }
 
-document
-  .querySelector("#play-pause")
-  .addEventListener("click", playPauseFn);
+const playPauseBtn = document.querySelector("#play-pause");
+const video = document.querySelector("video");
 
-document
-  .querySelector("video")
-  .addEventListener("play", updatePlayPauseIcon);
+playPauseBtn
+  .addEventListener("click", playPauseFn(video));
 
-document
-  .querySelector("video")
-  .addEventListener("pause", updatePlayPauseIcon);
+video
+  .addEventListener("play", updatePlayPauseIcon(playPauseBtn, video));
+
+video
+  .addEventListener("pause", updatePlayPauseIcon(playPauseBtn, video));

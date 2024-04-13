@@ -1,7 +1,4 @@
-const playPauseBtn = document.querySelector("#play-pause");
-const video = document.querySelector("video");
-
-export default function () {
+export default function (playPauseBtn, video) {
   const icon = playPauseBtn.querySelector("i");
 
   icon.textContent = "";

@@ -1,14 +1,14 @@
 import playPauseFn from "./modules/playPauseFn.js";
 import updatePlayPauseIcon from "./modules/updatePlayPauseIcon.js";
 
-document
-  .querySelector("#play-pause")
-  .addEventListener("click", playPauseFn);
+const playPauseBtn = document.querySelector("#play-pause");
+const video = document.querySelector("video");
 
-document
-  .querySelector("video")
-  .addEventListener("play", updatePlayPauseIcon);
+playPauseBtn
+  .addEventListener("click", playPauseFn(video));
 
-document
-  .querySelector("video")
-  .addEventListener("pause", updatePlayPauseIcon);
+video
+  .addEventListener("play", updatePlayPauseIcon(playPauseBtn, video));
+
+video
+  .addEventListener("pause", updatePlayPauseIcon(playPauseBtn, video));

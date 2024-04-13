@@ -1,6 +1,4 @@
-const video = document.querySelector("video");
-
-export default function () {
+export default function (video) {
   video.paused
     ? video.play()
     : video.pause();
