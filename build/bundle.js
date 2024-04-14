@@ -13,14 +13,26 @@ function updatePlayPauseIcon (playPauseBtn, video) {
     : "paused";
 }
 
+function rewindForwardFn (video, type) {
+  video.currentTime += type === "rewind" ? -10 : 10;
+}
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
+const rewindBtn = document.querySelector("#rewind");
+const fastForwardBtn = document.querySelector("#fast-forward");
 
 playPauseBtn
-  .addEventListener("click", playPauseFn(video));
+  .addEventListener("click", () => playPauseFn(video));
 
 video
-  .addEventListener("play", updatePlayPauseIcon(playPauseBtn, video));
+  .addEventListener("play", () => updatePlayPauseIcon(playPauseBtn, video));
 
 video
-  .addEventListener("pause", updatePlayPauseIcon(playPauseBtn, video));
+  .addEventListener("pause", () => updatePlayPauseIcon(playPauseBtn, video));
+
+rewindBtn
+  .addEventListener("click", () => rewindForwardFn(video, "rewind"));
+
+fastForwardBtn
+  .addEventListener("click", () => rewindForwardFn(video, "forward"));
