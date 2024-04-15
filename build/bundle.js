@@ -17,10 +17,26 @@ function rewindForwardFn (video, type) {
   video.currentTime += type === "rewind" ? -10 : 10;
 }
 
+function muteUnmuteFn (video) {
+  video.muted = video.muted
+    ? false
+    : true;
+}
+
+function updateVolumeIcon (volumeBtn, video) {
+  const icon = volumeBtn.querySelector("i");
+
+  icon.textContent = "";
+  icon.textContent = video.muted
+    ? "volume_off"
+    : "volume_up";
+}
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
 const fastForwardBtn = document.querySelector("#fast-forward");
+const volumeBtn = document.querySelector("#volume");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -36,3 +52,9 @@ rewindBtn
 
 fastForwardBtn
   .addEventListener("click", () => rewindForwardFn(video, "forward"));
+
+video
+  .addEventListener("volumechange", updateVolumeIcon(volumeBtn, video));
+
+volumeBtn
+  .addEventListener("click", () => muteUnmuteFn(video));
