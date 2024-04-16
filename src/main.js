@@ -3,12 +3,14 @@ import updatePlayPauseIcon from "./modules/updatePlayPauseIcon.js";
 import rewindForwardFn from "./modules/rewindForwardFn.js";
 import muteUnmuteFn from "./modules/muteUnmuteFn.js";
 import updateVolumeIcon from "./modules/updateVolumeIcon.js";
+import updateProgress from "./modules/updateProgress.js";
 
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
 const fastForwardBtn = document.querySelector("#fast-forward");
 const volumeBtn = document.querySelector("#volume");
+const progressIndicator = document.querySelector("#progress-indicator");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -30,3 +32,6 @@ video
 
 volumeBtn
   .addEventListener("click", () => muteUnmuteFn(video));
+
+video
+  .addEventListener("timeupfate", () => updateProgress(progressIndicator, video));

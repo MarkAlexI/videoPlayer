@@ -32,11 +32,18 @@ function updateVolumeIcon (volumeBtn, video) {
     : "volume_up";
 }
 
+function updateProgress (progressIndicator, video) {
+  const progressPercentage = (video.currentTime/video.duration) * 100;
+
+  progressIndicator.style.width = `${progressPercentage}%`;
+}
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
 const fastForwardBtn = document.querySelector("#fast-forward");
 const volumeBtn = document.querySelector("#volume");
+const progressIndicator = document.querySelector("#progress-indicator");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -58,3 +65,6 @@ video
 
 volumeBtn
   .addEventListener("click", () => muteUnmuteFn(video));
+
+video
+  .addEventListener("timeupfate", () => updateProgress(progressIndicator, video));
