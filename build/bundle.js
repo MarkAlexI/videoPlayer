@@ -73,5 +73,7 @@ window
   .addEventListener("keyup", (event) => {
     if (event.code === "Space") {
       playPauseFn(video);
+    } else if (event.code === "ArrowLeft") {
+      rewindForwardFn(video, "rewind");
     }
   });
