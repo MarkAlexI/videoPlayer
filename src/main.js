@@ -35,3 +35,10 @@ volumeBtn
 
 video
   .addEventListener("timeupfate", () => updateProgress(progressIndicator, video));
+
+window
+  .addEventListener("keyup", (event) => {
+    if (event.code === "Space") {
+      playPauseFn(video);
+    }
+  });
