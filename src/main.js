@@ -42,5 +42,9 @@ window
       playPauseFn(video);
     } else if (event.code === "ArrowLeft") {
       rewindForwardFn(video, "rewind");
+    } else if (event.code === "ArrowRight") {
+      rewindForwardFn(video, "forward");
+    } else {
+      return;
     }
   });
