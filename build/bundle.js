@@ -38,12 +38,19 @@ function updateProgress (progressIndicator, video) {
   progressIndicator.style.width = `${progressPercentage}%`;
 }
 
+function seekingFn (video, progressBar, event) {
+  const updatedTime = (event.offsetX/progressBar.offsetWidth) * video.duration;
+
+  video.currentTime = updatedTime;
+}
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
 const fastForwardBtn = document.querySelector("#fast-forward");
 const volumeBtn = document.querySelector("#volume");
 const progressIndicator = document.querySelector("#progress-indicator");
+const progressBar = document.querySelector("#progress-bar");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -81,3 +88,6 @@ window
       return;
     }
   });
+
+progressBar
+  .addEventListener("click", (event) => seekingFn(video, progressBar, event));

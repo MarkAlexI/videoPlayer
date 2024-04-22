@@ -4,6 +4,7 @@ import rewindForwardFn from "./modules/rewindForwardFn.js";
 import muteUnmuteFn from "./modules/muteUnmuteFn.js";
 import updateVolumeIcon from "./modules/updateVolumeIcon.js";
 import updateProgress from "./modules/updateProgress.js";
+import seekingFn from "./modules/seekingFn.js";
 
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
@@ -11,6 +12,7 @@ const rewindBtn = document.querySelector("#rewind");
 const fastForwardBtn = document.querySelector("#fast-forward");
 const volumeBtn = document.querySelector("#volume");
 const progressIndicator = document.querySelector("#progress-indicator");
+const progressBar = document.querySelector("#progress-bar");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -48,3 +50,6 @@ window
       return;
     }
   });
+
+progressBar
+  .addEventListener("click", (event) => seekingFn(video, progressBar, event));
