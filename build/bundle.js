@@ -32,7 +32,7 @@ function updateVolumeIcon (volumeBtn, video) {
     : "volume_up";
 }
 
-function updateProgress (progressIndicator, video) {
+function updateProgress (video, progressIndicator) {
   const progressPercentage = (video.currentTime/video.duration) * 100;
 
   progressIndicator.style.width = `${progressPercentage}%`;
@@ -74,7 +74,7 @@ volumeBtn
   .addEventListener("click", () => muteUnmuteFn(video));
 
 video
-  .addEventListener("timeupfate", () => updateProgress(progressIndicator, video));
+  .addEventListener("timeupdate", () => updateProgress(progressIndicator, video));
 
 window
   .addEventListener("keyup", (event) => {
@@ -88,6 +88,9 @@ window
       return;
     }
   });
+
+video
+  .addEventListener("timeupdate", () => updateProgress(video, progressIndicator));
 
 progressBar
   .addEventListener("click", (event) => seekingFn(video, progressBar, event));

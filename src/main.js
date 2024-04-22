@@ -51,5 +51,8 @@ window
     }
   });
 
+video
+  .addEventListener("timeupdate", () => updateProgress(video, progressIndicator));
+
 progressBar
   .addEventListener("click", (event) => seekingFn(video, progressBar, event));
