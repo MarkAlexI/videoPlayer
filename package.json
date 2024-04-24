@@ -1,6 +1,6 @@
 {
   "name": "videoplayer",
-  "version": "1.18.2",
+  "version": "1.19.2",
   "description": "Custom Video Player on HTML. Used RollupJS, Tailwind with postcss.",
   "author": "markalexi",
   "type": "module",
@@ -11,6 +11,7 @@
     "build": "rollup --config && npx tailwindcss -i ./src/styles/main.css -o ./build/main.css --minify"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "rollup": "^4.13.2",

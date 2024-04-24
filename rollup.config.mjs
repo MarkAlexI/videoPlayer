@@ -2,6 +2,7 @@ import tailwindcss from "tailwindcss";
 import tailwindConfig from "./tailwind.config.js";
 import postcss from "postcss";
 import { eslint } from "rollup-plugin-eslint";
+import terser from "@rollup/plugin-terser";
 
 export default {
   input: "src/main.js",
@@ -25,6 +26,9 @@ export default {
       exclude: ["src/styles/**"],
       include: ["src/modules/**"],
       fix: true
+    }),
+    terser({
+      maxWorkers: 1
     }),
   ]
 };
