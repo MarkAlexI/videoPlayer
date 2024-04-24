@@ -54,5 +54,16 @@ window
 video
   .addEventListener("timeupdate", () => updateProgress(video, progressIndicator));
 
+let isMouseDown = false;
+
 progressBar
   .addEventListener("click", (event) => seekingFn(video, progressBar, event));
+
+progressBar
+  .addEventListener("mousedown", () => (isMouseDown = true));
+
+progressBar
+  .addEventListener("mouseup", () => (isMouseDown = false));
+
+progressBar
+  .addEventListener("mousemove", (event) => isMouseDown && seekingFn(video, progressBar, event));
