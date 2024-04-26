@@ -5,6 +5,7 @@ import muteUnmuteFn from "./modules/muteUnmuteFn.js";
 import updateVolumeIcon from "./modules/updateVolumeIcon.js";
 import updateProgress from "./modules/updateProgress.js";
 import seekingFn from "./modules/seekingFn.js";
+import selectFileForPlaying from "./modules/selectFileForPlaying.js";
 
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
@@ -13,6 +14,8 @@ const fastForwardBtn = document.querySelector("#fast-forward");
 const volumeBtn = document.querySelector("#volume");
 const progressIndicator = document.querySelector("#progress-indicator");
 const progressBar = document.querySelector("#progress-bar");
+const filePickerBtn = document.querySelector("#load-file");
+const fileInput = document.querySelector("#file-input");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -67,3 +70,9 @@ progressBar
 
 progressBar
   .addEventListener("mousemove", (event) => isMouseDown && seekingFn(video, progressBar, event));
+
+filePickerBtn
+  .addEventListener("click", () => fileInput.click());
+
+fileInput
+  .addEventListener("change", (event) => selectFileForPlaying(video, event));
