@@ -19,27 +19,23 @@ const fileInput = document.querySelector("#file-input");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
-
 video
   .addEventListener("play", () => updatePlayPauseIcon(playPauseBtn, video));
-
 video
   .addEventListener("pause", () => updatePlayPauseIcon(playPauseBtn, video));
 
 rewindBtn
   .addEventListener("click", () => rewindForwardFn(video, "rewind"));
-
 fastForwardBtn
   .addEventListener("click", () => rewindForwardFn(video, "forward"));
 
 video
   .addEventListener("volumechange", updateVolumeIcon(volumeBtn, video));
-
 volumeBtn
   .addEventListener("click", () => muteUnmuteFn(video));
 
 video
-  .addEventListener("timeupfate", () => updateProgress(progressIndicator, video));
+  .addEventListener("timeupdate", () => updateProgress(progressIndicator, video));
 
 window
   .addEventListener("keyup", (event) => {
@@ -61,18 +57,14 @@ let isMouseDown = false;
 
 progressBar
   .addEventListener("click", (event) => seekingFn(video, progressBar, event));
-
 progressBar
   .addEventListener("mousedown", () => (isMouseDown = true));
-
 progressBar
   .addEventListener("mouseup", () => (isMouseDown = false));
-
 progressBar
   .addEventListener("mousemove", (event) => isMouseDown && seekingFn(video, progressBar, event));
 
 filePickerBtn
   .addEventListener("click", () => fileInput.click());
-
 fileInput
   .addEventListener("change", (event) => selectFileForPlaying(video, event));
