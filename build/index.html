@@ -16,7 +16,7 @@
 <body class="bg-indigo-950 p-10">
   <div
     id="container"
-    class="w-4/5 h-4/5 mx-auto rounded-lg overflow-hidden relative group"
+    class="w-11/12 h-2/3 mx-auto rounded-lg overflow-hidden relative group"
   >
     <!-- VIDEO -->
     <figure>
@@ -31,7 +31,7 @@
     <!-- CONTROLS -->
     <div
       id="controls"
-      class="opacity-0 p-5 absolute bottom-0 left-0 w-full transition-opacity duration-300 ease-linear group-hover:opacity-100"
+      class="opacity-0 p-5 absolute bottom-10 left-0 w-full transition-opacity duration-300 ease-linear group-hover:opacity-100"
     >
       <!-- PROGRESS BAR -->
       <div id="progress-bar" class="h-1 w-full bg-white cursor-pointer mb-4">
@@ -67,7 +67,7 @@
           >
             <i class="material-icons text-white text-3xl w-12">forward_10</i>
           </button>
-         <!-- LOAD FILE BUTTON -->
+          <!-- LOAD FILE BUTTON -->
           <button
             id="load-file"
             class="transition-all duration-100 ease-linear hover:scale-125"
@@ -80,6 +80,13 @@
             accept="video/*"
             style="display: none;"
           >
+          <!-- LOAD TEXT INPUT BUTTON -->
+          <button
+            id="load-text-input"
+            class="transition-all duration-100 ease-linear hover:scale-125"
+          >
+            <i class="material-icons text-white text-3xl w-12">insert_drive_file</i>
+          </button>
         </div>
 
         <div>
@@ -93,6 +100,12 @@
         </div>
       </div>
     </div>
+    <input
+      type="text"
+      id="text-input"
+      placeholder="Enter URL here for playing..."
+      class="hidden bg-white text-black px-3 py-2 mt-2 w-full rounded-md shadow-md"
+    />
   </div>
 </body>
 </html>
