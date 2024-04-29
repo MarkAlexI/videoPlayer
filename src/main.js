@@ -7,6 +7,9 @@ import updateProgress from "./modules/updateProgress.js";
 import seekingFn from "./modules/seekingFn.js";
 import selectFileForPlaying from "./modules/selectFileForPlaying.js";
 
+import toggleDisplay from "./modules/toggleDisplay.js";
+import setSrcFromURL from "./modules/setSrcFromURL.js";
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
@@ -73,13 +76,8 @@ fileInput
   .addEventListener("change", (event) => selectFileForPlaying(video, event));
 
 loadTextInputBtn
-  .addEventListener("click", () => (textInput.style.display = "block", textInput.focus()));
+  .addEventListener("click", () => (toggleDisplay(textInput), textInput.focus()));
 textInput
-  .addEventListener("focusout", (event) => event.target.style.display = "none");
+  .addEventListener("focusout", () => toggleDisplay(textInput));
 textInput
-  .addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      video.src = event.data;
-    }
-  });
+  .addEventListener("keypress", (event) => setSrcFromURL(video, event));
