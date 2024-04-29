@@ -17,6 +17,9 @@ const progressBar = document.querySelector("#progress-bar");
 const filePickerBtn = document.querySelector("#load-file");
 const fileInput = document.querySelector("#file-input");
 
+const loadTextInputBtn = document.querySelector("#load-text-input");
+const textInput = document.querySelector("#text-input");
+
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
 video
@@ -68,3 +71,15 @@ filePickerBtn
   .addEventListener("click", () => fileInput.click());
 fileInput
   .addEventListener("change", (event) => selectFileForPlaying(video, event));
+
+loadTextInputBtn
+  .addEventListener("click", () => (textInput.style.display = "block", textInput.focus()));
+textInput
+  .addEventListener("focusout", (event) => event.target.style.display = "none");
+textInput
+  .addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      video.src = event.data;
+    }
+  });
