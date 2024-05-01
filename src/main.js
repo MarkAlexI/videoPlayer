@@ -1,14 +1,14 @@
-import playPauseFn from "./modules/playPauseFn.js";
-import updatePlayPauseIcon from "./modules/updatePlayPauseIcon.js";
-import rewindForwardFn from "./modules/rewindForwardFn.js";
-import muteUnmuteFn from "./modules/muteUnmuteFn.js";
-import updateVolumeIcon from "./modules/updateVolumeIcon.js";
-import updateProgress from "./modules/updateProgress.js";
-import seekingFn from "./modules/seekingFn.js";
-import selectFileForPlaying from "./modules/selectFileForPlaying.js";
+import playPauseFn from "./modules/seek/playPauseFn.js";
+import updatePlayPauseIcon from "./modules/ui/updatePlayPauseIcon.js";
+import rewindForwardFn from "./modules/seek/rewindForwardFn.js";
+import muteUnmuteFn from "./modules/volume/muteUnmuteFn.js";
+import updateVolumeIcon from "./modules/ui/updateVolumeIcon.js";
+import updateProgress from "./modules/ui/updateProgress.js";
+import seekingFn from "./modules/seek/seekingFn.js";
+import selectFileForPlaying from "./modules/source/selectFileForPlaying.js";
 
-import toggleDisplay from "./modules/toggleDisplay.js";
-import setSrcFromURL from "./modules/setSrcFromURL.js";
+import toggleDisplay from "./modules/ui/toggleDisplay.js";
+import setSrcFromURL from "./modules/source/setSrcFromURL.js";
 
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");

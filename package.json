@@ -1,6 +1,6 @@
 {
   "name": "videoplayer",
-  "version": "1.23.3",
+  "version": "1.23.4",
   "description": "Custom Video Player on HTML. Used RollupJS, Tailwind with postcss.",
   "author": "markalexi",
   "type": "module",
