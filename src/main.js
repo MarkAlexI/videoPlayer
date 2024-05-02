@@ -23,6 +23,8 @@ const fileInput = document.querySelector("#file-input");
 const loadTextInputBtn = document.querySelector("#load-text-input");
 const textInput = document.querySelector("#text-input");
 
+const onFullScreenBtn = document.querySelector("#on-full-screen");
+console.log(onFullScreenBtn);
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
 video
@@ -81,3 +83,37 @@ textInput
   .addEventListener("focusout", () => toggleDisplay(textInput));
 textInput
   .addEventListener("keypress", (event) => setSrcFromURL(video, event));
+
+const requestFullScreen = async () => {
+  let element = await document.documentElement;
+  let requestMethod =
+    element.requestFullScreen ||
+    element.webkitRequestFullScreen ||
+    element.mozRequestFullScreen ||
+    element.msRequestFullScreen;
+  if (requestMethod) {
+    requestMethod.call(element);
+    return true;
+  } else if (typeof window.ActiveXObject !== "undefined") {
+    let wscript = new ActiveXObject("WScript.Shell");
+    if (wscript !== null) {
+      wscript.SendKeys("{F11}");
+      return true;
+    }
+  }
+};
+
+const lock = async () => {
+  if (document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen) {
+     setTimeout(function() {
+       window.screen.orientation.lock("landscape");
+     }, 200);
+  }
+  return true;
+};
+
+onFullScreenBtn
+  .addEventListener("click", () => {console.log("onfull");
+    requestFullScreen();
+    lock();
+  });
