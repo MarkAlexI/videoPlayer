@@ -24,7 +24,7 @@ const loadTextInputBtn = document.querySelector("#load-text-input");
 const textInput = document.querySelector("#text-input");
 
 const onFullScreenBtn = document.querySelector("#on-full-screen");
-console.log(onFullScreenBtn);
+
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
 video
@@ -106,14 +106,14 @@ const requestFullScreen = async () => {
 const lock = async () => {
   if (document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen) {
      setTimeout(function() {
-       window.screen.orientation.lock("landscape");
+       window.screen.orientation.lock("landscape-primary");
      }, 200);
   }
   return true;
 };
 
 onFullScreenBtn
-  .addEventListener("click", () => {console.log("onfull");
-    requestFullScreen();
-    lock();
-  });
+  .addEventListener("click", () => (requestFullScreen(), lock()));
+
+video
+  .addEventListener("error", () => alert("Some error occured when load file."));
