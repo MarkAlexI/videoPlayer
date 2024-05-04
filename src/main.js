@@ -10,6 +10,9 @@ import selectFileForPlaying from "./modules/source/selectFileForPlaying.js";
 import toggleDisplay from "./modules/ui/toggleDisplay.js";
 import setSrcFromURL from "./modules/source/setSrcFromURL.js";
 
+import dialogClose from "./modules/dialog/dialogClose.js";
+import showSourceError from "./modules/dialog/showSourceError.js";
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
@@ -24,6 +27,10 @@ const loadTextInputBtn = document.querySelector("#load-text-input");
 const textInput = document.querySelector("#text-input");
 
 const onFullScreenBtn = document.querySelector("#on-full-screen");
+
+const dialog = document.querySelector("dialog");
+const showParagraf = document.querySelector("dialog p");
+const closeButton = document.querySelector("dialog button");
 
 playPauseBtn
   .addEventListener("click", () => playPauseFn(video));
@@ -116,4 +123,7 @@ onFullScreenBtn
   .addEventListener("click", () => (requestFullScreen(), lock()));
 
 video
-  .addEventListener("error", () => alert("Some error occured when load file."));
+  .addEventListener("error", (event) => showSourceError(dialog, showParagraf, event));
+
+closeButton
+  .addEventListener("click", () => dialogClose(dialog));
