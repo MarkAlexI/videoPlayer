@@ -27,6 +27,7 @@ const loadTextInputBtn = document.querySelector("#load-text-input");
 const textInput = document.querySelector("#text-input");
 
 const onFullScreenBtn = document.querySelector("#on-full-screen");
+const unlockBtn = document.querySelector("#unlock-btn");
 
 const dialog = document.querySelector("dialog");
 const showParagraf = document.querySelector("dialog p");
@@ -120,7 +121,19 @@ const lock = async () => {
 };
 
 onFullScreenBtn
-  .addEventListener("click", () => (requestFullScreen(), lock()));
+  .addEventListener("click", () => {
+    requestFullScreen();
+    lock();
+    toggleDisplay(onFullScreenBtn);
+    toggleDisplay(unlockBtn);
+  });
+unlockBtn
+  .addEventListener("click", () => {
+    document.exitFullscreen();
+    window.screen.orientation.unlock();
+    toggleDisplay(onFullScreenBtn);
+    toggleDisplay(unlockBtn);
+  });
 
 video
   .addEventListener("error", (event) => showSourceError(dialog, showParagraf, event));
