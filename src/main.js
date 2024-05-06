@@ -120,6 +120,17 @@ const lock = async () => {
   return true;
 };
 
+const exitFullscreen = () => {
+  if (typeof window.ActiveXObject !== "undefined") {
+    let wscript = new ActiveXObject("WScript.Shell");
+    if (wscript !== null) {
+      wscript.SendKeys("{F11}");
+    }
+  } else {
+    document.exitFullscreen();
+  }
+};
+
 onFullScreenBtn
   .addEventListener("click", () => {
     requestFullScreen();
@@ -129,7 +140,7 @@ onFullScreenBtn
   });
 unlockBtn
   .addEventListener("click", () => {
-    document.exitFullscreen();
+    exitFullscreen();
     window.screen.orientation.unlock();
     toggleDisplay(onFullScreenBtn);
     toggleDisplay(unlockBtn);
