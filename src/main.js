@@ -13,6 +13,11 @@ import setSrcFromURL from "./modules/source/setSrcFromURL.js";
 import dialogClose from "./modules/dialog/dialogClose.js";
 import showSourceError from "./modules/dialog/showSourceError.js";
 
+import requestFullScreen from "./modules/screen/requestFullScreen.js";
+import lock from "./modules/screen/lock.js";
+import exitFullscreen from "./modules/screen/exitFullscreen.js";
+import unlock from "./modules/screen/unlock.js";
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
@@ -92,56 +97,17 @@ textInput
 textInput
   .addEventListener("keypress", (event) => setSrcFromURL(video, event));
 
-const requestFullScreen = async () => {
-  let element = await document.documentElement;
-  let requestMethod =
-    element.requestFullScreen ||
-    element.webkitRequestFullScreen ||
-    element.mozRequestFullScreen ||
-    element.msRequestFullScreen;
-  if (requestMethod) {
-    requestMethod.call(element);
-    return true;
-  } else if (typeof window.ActiveXObject !== "undefined") {
-    let wscript = new ActiveXObject("WScript.Shell");
-    if (wscript !== null) {
-      wscript.SendKeys("{F11}");
-      return true;
-    }
-  }
-};
-
-const lock = async () => {
-  if (document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen) {
-     setTimeout(function() {
-       window.screen.orientation.lock("landscape-primary");
-     }, 200);
-  }
-  return true;
-};
-
-const exitFullscreen = () => {
-  if (typeof window.ActiveXObject !== "undefined") {
-    let wscript = new ActiveXObject("WScript.Shell");
-    if (wscript !== null) {
-      wscript.SendKeys("{F11}");
-    }
-  } else {
-    document.exitFullscreen();
-  }
-};
-
 onFullScreenBtn
   .addEventListener("click", () => {
-    requestFullScreen();
-    lock();
+    requestFullScreen(window);
+    lock(window);
     toggleDisplay(onFullScreenBtn);
     toggleDisplay(unlockBtn);
   });
 unlockBtn
   .addEventListener("click", () => {
-    exitFullscreen();
-    window.screen.orientation.unlock();
+    exitFullscreen(window);
+    unlock(window);
     toggleDisplay(onFullScreenBtn);
     toggleDisplay(unlockBtn);
   });
