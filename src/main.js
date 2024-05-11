@@ -54,6 +54,14 @@ video
   .addEventListener("volumechange", updateVolumeIcon(volumeBtn, video));
 volumeBtn
   .addEventListener("click", () => muteUnmuteFn(video));
+window
+  .addEventListener("keydown", (event) => {
+    if (event.code === "ArrowUp") {
+      video.volume += .1;
+    } else if (event.code === "ArrowDown") {
+      video.volume -= .1;
+    }
+  });
 
 video
   .addEventListener("timeupdate", () => updateProgress(progressIndicator, video));
