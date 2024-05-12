@@ -120,6 +120,8 @@ unlockBtn
     toggleDisplay(unlockBtn);
   });
 
+window
+  .addEventListener("error", (event) => showSourceError(dialog, showParagraf, event));
 video
   .addEventListener("error", (event) => showSourceError(dialog, showParagraf, event));
 
