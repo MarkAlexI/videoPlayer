@@ -18,6 +18,9 @@ import lock from "./modules/screen/lock.js";
 import exitFullscreen from "./modules/screen/exitFullscreen.js";
 import unlock from "./modules/screen/unlock.js";
 
+import saveCurrentTime from "./modules/storage/saveCurrentTime.js";
+import loadCurrentTime from "./modules/storage/loadCurrentTime.js";
+
 const playPauseBtn = document.querySelector("#play-pause");
 const video = document.querySelector("video");
 const rewindBtn = document.querySelector("#rewind");
@@ -127,3 +130,8 @@ video
 
 closeButton
   .addEventListener("click", () => dialogClose(dialog));
+
+window
+  .addEventListener("beforeunload", () => saveCurrentTime(sessionStorage, video));
+window
+  .addEventListener("load", () => loadCurrentTime(sessionStorage, video));
