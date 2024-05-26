@@ -1,129 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Video Player</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" type="text/css" href="./main.css" />
-  <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <script src="./bundle.js" type="module" defer="true"></script>
 </head>
 
 <body class="bg-indigo-950 p-10">
-  <div
-    id="container"
-    class="min-h-96 w-11/12 h-2/3 mx-auto rounded-lg overflow-hidden relative group"
-  >
+  <div id="container" class="min-h-36 w-11/12 mx-auto rounded-lg overflow-hidden relative group">
     <!-- VIDEO -->
-    <figure>
+    <figure class="w-full">
       <video class="w-full">
-        <source
-          src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
-          preload="none"
-          type="video/mp4"
-        />
+        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" preload="none" type="video/mp4" />
       </video>
     </figure>
     <!-- CONTROLS -->
-    <div
-      id="controls"
-      class="min-h-80 opacity-0 p-5 absolute bottom-0 left-0 w-full transition-opacity duration-300 ease-linear group-hover:opacity-100"
-    >
-      <!-- PROGRESS BAR -->
-      <div id="progress-bar" class="h-1 w-full bg-white cursor-pointer mb-4">
-        <div
-          id="progress-indicator"
-          class="h-full w-0 bg-indigo-800 transition-all duration-500 ease-in-out"
-        ></div>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="flex items-center justify-between">
-          <!-- REWIND BUTTON -->
-          <button
-            id="rewind"
-            class="transition-all duration-100 ease-linear hover:scale-125"
-          >
-            <i class="material-icons text-white text-3xl w-12">replay_10 </i>
-          </button>
-
-          <!-- PLAY BUTTON -->
-          <button
-            id="play-pause"
-            class="transition-all duration-100 ease-linear hover:scale-125"
-          >
-            <i class="material-icons text-white text-5xl inline-block w-12"
-              >play_arrow</i
-            >
-          </button>
-
-          <!-- FAST FORWARD BUTTON -->
-          <button
-            id="fast-forward"
-            class="transition-all duration-100 ease-linear hover:scale-125"
-          >
-            <i class="material-icons text-white text-3xl w-12">forward_10</i>
-          </button>
-          <!-- LOAD FILE BUTTON -->
-          <button
-            id="load-file"
-            class="transition-all duration-100 ease-linear hover:scale-125"
-          >
-            <i class="material-icons text-white text-3xl w-12">file_open</i>
-          </button>
-          <input
-            type="file"
-            id="file-input"
-            accept="video/*"
-            style="display: none;"
-          >
-          <!-- LOAD TEXT INPUT BUTTON -->
-          <button
-            id="load-text-input"
-            class="transition-all duration-100 ease-linear hover:scale-125"
-          >
-            <i class="material-icons text-white text-3xl w-12">insert_drive_file</i>
-          </button>
-          <!-- ON FULL SCREEN BUTTON -->
-          <button
-            id="on-full-screen"
-            class="transition-all duration-100 ease-linear hover:scale-125 absolute top-0 right-0"
-          >
+    <div id="controls" class="opacity-0 p-5 absolute bottom-0 left-0 w-full transition-opacity duration-300 ease-linear group-hover:opacity-100">
+      <!-- FULLSCREEN BUTTON -->
+      <div class="flex justify-between mb-4">
+       <div></div>
+        <div>
+          <button id="on-full-screen" class="transition-all duration-100 ease-linear hover:scale-125">
             <i class="material-icons text-white text-3xl">fullscreen</i>
           </button>
-          <button
-            id="unlock-btn"
-            class="hidden transition-all duration-100 ease-linearhover:scale-125 absolute top-0 right-0"
-          >
+          <button id="unlock-btn" class="hidden transition-all duration-100 ease-linear hover:scale-125">
             <i class="material-icons text-white text-3xl">fullscreen_exit</i>
           </button>
         </div>
+      </div>
+      <!-- PROGRESS BAR -->
+      <div id="progress-bar" class="h-1 w-full bg-white cursor-pointer mb-4">
+        <div id="progress-indicator" class="h-full w-0 bg-indigo-800 transition-all duration-500 ease-in-out"></div>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <!-- REWIND BUTTON -->
+          <button id="rewind" class="transition-all duration-100 ease-linear hover:scale-125">
+            <i class="material-icons text-white text-3xl w-12">replay_10</i>
+          </button>
 
+          <!-- PLAY BUTTON -->
+          <button id="play-pause" class="transition-all duration-100 ease-linear hover:scale-125">
+            <i class="material-icons text-white text-5xl inline-block w-12">play_arrow</i>
+          </button>
+
+          <!-- FAST FORWARD BUTTON -->
+          <button id="fast-forward" class="transition-all duration-100 ease-linear hover:scale-125">
+            <i class="material-icons text-white text-3xl w-12">forward_10</i>
+          </button>
+          
+          <!-- LOAD FILE BUTTON -->
+          <button id="load-file" class="transition-all duration-100 ease-linear hover:scale-125">
+            <i class="material-icons text-white text-3xl w-12">file_open</i>
+          </button>
+          <input type="file" id="file-input" accept="video/*" style="display: none;">
+
+          <!-- LOAD TEXT INPUT BUTTON -->
+          <button id="load-text-input" class="transition-all duration-100 ease-linear hover:scale-125">
+            <i class="material-icons text-white text-3xl w-12">insert_drive_file</i>
+          </button>
         <div>
           <!-- VOLUME BUTTON -->
-          <button
-            id="volume"
-            class="transition-all duration-100 ease-linear hover:scale-125"
-          >
+          <button id="volume" class="transition-all duration-100 ease-linear hover:scale-125">
             <i class="material-icons text-white text-3xl">volume_up</i>
           </button>
         </div>
       </div>
     </div>
-    <input
-      type="text"
-      id="text-input"
-      placeholder="Enter URL here for playing..."
-      class="hidden bg-white text-black px-3 py-2 mt-2 w-full rounded-md shadow-md"
-    />
+    <input type="text" id="text-input" placeholder="Enter URL here for playing..." class="hidden bg-white text-black px-3 py-2 mt-2 w-full rounded-md shadow-md" />
   </div>
 
   <dialog>
     <button autofocus>Close</button>
-    <p>Some error occured when loading video source: </p>
+    <p>Some error occurred when loading video source: </p>
   </dialog>
 </body>
 </html>

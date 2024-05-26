@@ -1,2 +1,2 @@
 # videoPlayer
-Video player for site on JavaScript.
+Custom Video Player on HTML. Used RollupJS, Tailwind with postcss.
